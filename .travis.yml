@@ -1,0 +1,13 @@
+language: scala
+scala:
+- 2.11.6
+jdk:
+- oraclejdk8
+- oraclejdk7
+services: mongodb
+script:
+- sbt scoverage:test
+- sbt coveralls
+env:
+  global:
+    secure: JP0uzrEMuf0tzcUuT9vqc8JX+RKkUih4FBOMKSQe4BXSjc2NmZuG9pLZLwc0GJK/j+SlIpPvPmRrYja54h0ie1STaw+dkUfgDv/htLiWhV1cnp/Iaj86iiULwqtdb8d2c7/Y/4KfpBpzrZI1hcQad+sO3z7yIkyNuzh7rIt8hX8=
