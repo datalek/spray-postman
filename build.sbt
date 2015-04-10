@@ -19,6 +19,7 @@ libraryDependencies ++= Seq(
 lazy val commonSettings = Seq(
 	organization := "com.wannaup",
 	version := "0.0.1",
+	resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/",
 	scalaVersion := "2.11.5",
 	scalacOptions ++= Seq(),
 	scalacOptions in Test ~= { (options: Seq[String]) =>
