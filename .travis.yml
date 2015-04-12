@@ -13,6 +13,7 @@ env:
   global:
     secure: JP0uzrEMuf0tzcUuT9vqc8JX+RKkUih4FBOMKSQe4BXSjc2NmZuG9pLZLwc0GJK/j+SlIpPvPmRrYja54h0ie1STaw+dkUfgDv/htLiWhV1cnp/Iaj86iiULwqtdb8d2c7/Y/4KfpBpzrZI1hcQad+sO3z7yIkyNuzh7rIt8hX8=
 deploy:
+  provider: heroku
   app: scalapostman
   api_key:
     secure: dA3C1tqOHTPLe27oz+k+kKmv2cb061tAoCNE/RfwjVIndxXm3g1NzxnoHjNJXp8YXeEat2lAG4dr6Je0pgDaZaAN1fPeQKdMHxLP2JmBXZHejCBRJYcK+LYepq2pF7P6RdUyBPx68G2RplxG8maPWEeAU3jFICw/C4MKx9tyA2s=
