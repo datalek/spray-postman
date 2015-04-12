@@ -1,0 +1,1 @@
+web: target/universal/stage/bin/postman -Dhttp.port=${PORT} -Dconfig.file=src/main/resources/prod.conf

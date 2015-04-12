@@ -32,7 +32,7 @@ object Boot extends App with Config {
 
   implicit val timeout = Timeout(5.seconds)
   // start a new HTTP server on port 8080 with our service actor as the handler
-  IO(Http) ? Http.Bind(service, interface = config.getString("server.host"), port = config.getInt("server.port"))
+  IO(Http) ? Http.Bind(service, interface = config.getString("http.host"), port = config.getInt("http.port"))
 
   sys.addShutdownHook(system.shutdown())
 
