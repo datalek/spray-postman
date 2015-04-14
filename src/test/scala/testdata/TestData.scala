@@ -24,7 +24,17 @@ object MessageData {
   val msg2 = Message(from = UserData.user0.email.get, to = Some(UserData.user1.email.get), body = "Hey!")
   val msg3 = Message(from = UserData.user0.email.get, to = Some(UserData.user1.email.get), body = "I'm batman!")
   val msg4 = Message(from = UserData.user1.email.get, to = Some(UserData.user0.email.get), body = "WTF!")
-
+  
+  private val meta = """
+      { 
+        "some": "meta",
+        "other": { 
+          "beautiful": [ "meta" ]
+        }
+      }
+      """
+  val msgWithMeta = Json.toJson(MessageWithMeta(from = UserData.user0.email.get, to = Some(UserData.user1.email.get), body = "hello!", meta = Some(meta)))(wannaup.formats.MessageFormats.restWithMeta)
+  
   val messages = List(msg0, msg1, msg2, msg3, msg4)
 }
 

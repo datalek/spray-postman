@@ -58,7 +58,11 @@ class ThreadService(val mailService: MailService) {
    * @param message to sent
    */
   def create(owner: User, message: Message): Future[Thread] = {
-    val thread = Thread(owner = owner, messages = List(message))
+    val thread = message match {
+      case m: Message with Meta =>
+        Thread(owner = owner, messages = List(message), meta = m.meta)
+      case m: Message => Thread(owner = owner, messages = List(message))
+    }
     Threads.c.save(thread).map { lastError =>
       val email = Email(
         subject = "",

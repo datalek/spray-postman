@@ -52,6 +52,16 @@ class ThreadRouteSpec extends Specification with Specs2RouteTest
         responseAs[Thread] must be equalTo (dbThread.get)
       }
     }
+    
+    "create a new thread with meta when POST a message with meta to /threads" in {
+      val authHeader = HttpHeaders.`Authorization`(BasicHttpCredentials(UserData.user1.id, "doesn't matter man"))
+      Post("/threads", MessageData.msgWithMeta) ~> addHeader(authHeader) ~> threadRoute.route ~> check {
+        response.status should be(StatusCodes.OK)
+        val respThread = responseAs[Thread]
+        val dbThread = Await.result(Threads.c.find(BSONDocument("_id" -> BSONObjectID(respThread.id))).one[Thread], 5.seconds)
+        responseAs[JsValue] \ "meta" must be equalTo (Json.parse(dbThread.get.meta.get))
+      }
+    }
     //TODO: finish it we need error, BadRequest
     //    "create a new thread when POST a message to /threads without `to` key" in {
     //      val authHeader = HttpHeaders.`Authorization`(BasicHttpCredentials(UserData.user1.id, "doesn't matter man"))

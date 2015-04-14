@@ -53,7 +53,7 @@ trait ThreadRoute extends HttpService {
     } ~
     (path("threads") & pathEndOrSingleSlash) {
       post {
-        entity(as[Message]) { message =>
+        entity(as[Message with Meta]) { message =>
           authenticate(BasicAuthentication) { user =>
             val resp = threadService.create(owner = user, message = message)
             complete(resp)

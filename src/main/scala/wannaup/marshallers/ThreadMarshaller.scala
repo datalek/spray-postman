@@ -13,6 +13,7 @@ import wannaup.models._
 object ThreadMarshaller extends PlayJsonSupport {
   implicit val threadRestFormat = wannaup.formats.ThreadFormats.rest
   implicit val messageRestFormat = wannaup.formats.MessageFormats.rest
+  implicit val messageWithMetaRestFormat = wannaup.formats.MessageFormats.restWithMeta
   implicit val inboundUnmarshaller = Unmarshaller[List[Inbound]](`multipart/form-data`, `application/x-www-form-urlencoded`, `text/plain`) {
     case HttpEntity.NonEmpty(contentType, data) =>
       implicit val a = wannaup.formats.InboundFormats.rest
